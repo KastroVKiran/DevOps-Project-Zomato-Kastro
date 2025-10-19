@@ -1,23 +1,27 @@
 # Use Node.js 16 slim as the base image
 FROM node:16-slim
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
+# Copy only package.json and lock file first to leverage Docker cache
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the application code
+# Copy the rest of the code
 COPY . .
 
-# Build the React app
+# Build the React app (optional: can be skipped in prod server if already built)
 RUN npm run build
 
-# Expose port 3000 (or the port your app is configured to listen on)
+# Use a minimal base image for production
+# If you don't need to serve the React build from Node.js, use a static server like nginx
+
+# EXPOSE port app runs on
 EXPOSE 3000
 
-# Start your Node.js server (assuming it serves the React app)  
+# Start the app
 CMD ["npm", "start"]
+
