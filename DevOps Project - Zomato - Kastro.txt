@@ -75,6 +75,7 @@ Verifiy Trivy installation: trivy --version
 8. Install Docker Scout
 Make sure to Login to DockerHub account in browser
 <Follow the process as explained in the video>
+Goto MobaXTerm Terminal ---> Login to DockerHub ---> docker login -u <DockerHubUserName>---> Click Enter ---> Enter the password of DockerHub ---> Lets install the Docker Scout ---> curl-sSfL. https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh-s---b /usr/local/bin ---> Give the permission to dockerScout to execute the file ---> sudo chmod 777/var/run/docker.sock
 
 9. Install SonarQube using Docker
 $ docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
