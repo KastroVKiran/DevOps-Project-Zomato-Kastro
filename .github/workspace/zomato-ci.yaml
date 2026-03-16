@@ -1,0 +1,21 @@
+name: CI - Git Checkout
+
+on:
+  push:
+    branches:
+      - feature/**  # Runs on any feature branch
+
+jobs:
+  checkout-code:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]  # Runs on both Windows and Linux
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+
+
